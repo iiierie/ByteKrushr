@@ -4,7 +4,10 @@ import pickle
 from collections import defaultdict
 import sys
 
-sys.path.append('..')
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '..')))
+
 from engine.huffman import compress_huffman, decompress_huffman
 from engine.deflate import compress_deflate, decompress_deflate
 from engine.lz77 import compress_lz77, decompress_lz77
