@@ -2,12 +2,15 @@ import streamlit as st
 import os
 import pickle
 from collections import defaultdict
-import sys
 
-from engine.huffman import compress_huffman, decompress_huffman
-from engine.deflate import compress_deflate, decompress_deflate
-from engine.lz77 import compress_lz77, decompress_lz77
-from engine.lzw import compress_lzw, decompress_lzw
+import sys
+import os
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'engine')))
+
+from huffman import compress_huffman, decompress_huffman
+from deflate import compress_deflate, decompress_deflate
+from lz77 import compress_lz77, decompress_lz77
+from lzw import compress_lzw, decompress_lzw
 
 # Set page configuration
 st.set_page_config(
