@@ -31,7 +31,7 @@ show_readme = st.sidebar.checkbox('How to use ByteKrushr? 🦈')
 if show_readme:
     with open('README.md', 'r') as f:
         readme_content = f.read()
-    st.title('Hey there! 😁')
+    st.title('Hey there!! 😁')
     st.markdown(readme_content)
 else:
             
