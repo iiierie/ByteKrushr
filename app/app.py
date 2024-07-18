@@ -29,11 +29,13 @@ action = st.sidebar.selectbox('Select Action', ('Compress', 'Decompress'))
 show_readme = st.sidebar.checkbox('How to use ByteKrushr? 🦈')
 
 if show_readme:
-    with open('README.md', 'r') as f:
-        readme_content = f.read()
-    st.title('Hey there!! 😁')
-    st.text(readme_content)  # Display raw text content
-
+    try:
+        with open('README.md', 'r', encoding='utf-8') as f:
+            readme_content = f.read()
+        st.title('Hey there!! 😁')
+        st.markdown(readme_content)  # Display Markdown content
+    except Exception as e:
+        st.error(f"Error reading README.md: {str(e)}")
 else:
             
     # Main content
