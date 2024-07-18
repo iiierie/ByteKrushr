@@ -1,6 +1,5 @@
 ## ByteKrushr - File Compression App
-#### ByteKrushr is a Streamlit-based application for file compression using various algorithms. 
-
+ByteKrushr is a Streamlit-based application for file compression using various algorithms. 
 
 
 ### How to Use ByteKrushr? 
