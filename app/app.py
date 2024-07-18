@@ -32,7 +32,8 @@ if show_readme:
     with open('README.md', 'r') as f:
         readme_content = f.read()
     st.title('Hey there!! 😁')
-    st.markdown(readme_content, unsafe_allow_html = False)
+    st.text(readme_content)  # Display raw text content
+
 else:
             
     # Main content
