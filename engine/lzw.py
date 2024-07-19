@@ -1,5 +1,6 @@
 def compress_lzw(input_data):
-    dictionary = {chr(i): i for i in range(1024)}
+    # Initialize the dictionary with all ASCII characters
+    dictionary = {chr(i): i for i in range(256)}
     result = []
     temp = ""
 
@@ -21,7 +22,7 @@ def compress_lzw(input_data):
 
 def decompress_lzw(compressed_data_string):
     compressed_data = [int(elem) for elem in compressed_data_string.split()]
-    dictionary = {i: chr(i) for i in range(1024)}
+    dictionary = {i: chr(i) for i in range(256)}
     result = []
     sequence = compressed_data[:]
     current_code = sequence.pop(0)
@@ -44,15 +45,14 @@ def decompress_lzw(compressed_data_string):
     return ''.join(result)
 
 
-# Example usage:
-if __name__ == "__main__":
-    # Example of compressing data
-    text = """
-In conclusion, anime embodies a rich tapestry of artistic expression, cultural heritage, and storytelling innovation that resonates with audiences worldwide."""
-    compressed_data = compress_lzw(text)
-    print("Compressed:", compressed_data)
+# # Example usage:
+# if __name__ == "__main__":
+#     # Example of compressing data
+#     text = """
+# In conclusion, anime embodies a rich tapestry of artistic expression, cultural heritage, and storytelling innovation that resonates with audiences worldwide."""
+#     compressed_data = compress_lzw(text)
+#     print("Compressed:", compressed_data)
 
-    # Example of decompressing data
-    decompressed_data = decompress_lzw(compressed_data)
-    print("Decompressed:", decompressed_data)
-
+#     # Example of decompressing data
+#     decompressed_data = decompress_lzw(compressed_data)
+#     print("Decompressed:", decompressed_data)
