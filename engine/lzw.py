@@ -1,5 +1,5 @@
 def compress_lzw(input_data):
-    # Initialize the dictionary with all ASCII characters
+    # Initialize the dictionary with ASCII characters (0-255)
     dictionary = {chr(i): i for i in range(256)}
     result = []
     temp = ""
@@ -9,12 +9,23 @@ def compress_lzw(input_data):
         if temp2 in dictionary:
             temp = temp2
         else:
-            result.append(dictionary[temp])
+            try:
+                result.append(dictionary[temp])
+            except KeyError:
+                # Handle the KeyError by skipping or adding a default value
+                print(f"Skipping unknown character sequence: {temp}")
+                # You might want to add some logic here for handling the error
+                temp = c  # Reset temp to current character
+                continue  # Skip adding the result for this sequence
             dictionary[temp2] = len(dictionary)
             temp = c
 
     if temp:
-        result.append(dictionary[temp])
+        try:
+            result.append(dictionary[temp])
+        except KeyError:
+            # Handle the KeyError by skipping or adding a default value
+            print(f"Skipping final unknown character sequence: {temp}")
 
     resultstring = ' '.join([str(elem) for elem in result])
     return resultstring
@@ -50,6 +61,7 @@ def decompress_lzw(compressed_data_string):
 #     # Example of compressing data
 #     text = """
 # In conclusion, anime embodies a rich tapestry of artistic expression, cultural heritage, and storytelling innovation that resonates with audiences worldwide."""
+    
 #     compressed_data = compress_lzw(text)
 #     print("Compressed:", compressed_data)
 
